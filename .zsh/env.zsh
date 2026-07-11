@@ -2,23 +2,23 @@
 # ENVIRONMENT & PATH CONFIGURATION (~/.zsh/env.zsh)
 # ==============================================================================
 
-# 1. INITIALIZE HOMEBREW ARCHITECTURE
-if [[ -x /opt/homebrew/bin/brew ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+# 1. CUSTOM BINARIES
+if [[ -d "$HOME/.local/bin" ]]; then
+    path=("$HOME/.local/bin" $path)
 fi
 
-# 2. BULLETPROOF PATH MATRIX
-# Force the path array to automatically drop duplicate entries
-typeset -U path PATH
+# 2. TOOL RUNTIMES
+# Using 'mise activate zsh' dynamically manages your PATH for Java, Node, etc.
+if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate zsh)"
+fi
 
-# Prepend custom binary directories cleanly in lookup priority order
-path=(
-    "$HOME/.local/bin"
-    "$HOME/.cargo/bin"
-    $path
-)
+# 3. BULLETPROOF PATH MATRIX
+# Ensures no duplicates if you source your config multiple times
+typeset -U path
+export PATH
 
-# 3. GLOBAL DEVELOPER DEFAULTS
+# 4. GLOBAL DEVELOPER DEFAULTS
 export EDITOR='nano'
 export VISUAL='nano'
 

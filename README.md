@@ -1,4 +1,4 @@
-# Dotfiles ⚙️
+# Dotfiles ⚙️ 
 
 My Developer First macOS setup using a modular "System vs. Project" approach for speed, isolation, and automation.
 
@@ -8,6 +8,7 @@ My Developer First macOS setup using a modular "System vs. Project" approach for
 * `mise.toml` — Global configuration for language runtimes (Java, Node, Python).
 * `.zshrc` — Shell configuration, aliases, and environment variables.
 * `.zsh/` — Directory containing modular shell functions (e.g., `sweep`, `sysdiag`).
+* `.zprofile` — Handles system-level initialization once at login.
 * `.gitignore` — Prevents local secrets and cache junk from being pushed.
 
 ## 🚀 Bootstrap Guide
