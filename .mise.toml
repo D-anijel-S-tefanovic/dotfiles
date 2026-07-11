@@ -1,0 +1,13 @@
+# ==============================================================================
+# GLOBAL RUNTIME & DEVELOPMENT LANGUAGE UTILITIES (mise.toml)
+# ==============================================================================
+
+[tools]
+# Strict, single global fallback environments for local development
+java   = "21.0.2"
+node   = "24.14.0"
+python = "3.14.3"
+
+[settings]
+# Advanced features enabled (includes experimental core performance engines)
+experimental = true
