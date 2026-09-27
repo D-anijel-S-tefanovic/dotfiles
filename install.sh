@@ -33,6 +33,12 @@ echo "📦 Installing tools from Brewfile..."
 brew bundle --file="$DOTFILES/Brewfile"
 brew autoremove
 
+# Grant Wireshark access to packet capture interfaces (bpf)
+if dscl . -read /Groups/access_bpf &>/dev/null; then
+    echo "🔐 Adding $USER to access_bpf group for Wireshark..."
+    sudo dscl . -append /Groups/access_bpf GroupMembership "$USER"
+fi
+
 # 6. INITIALIZE MISE & RUNTIMES
 if command -v mise &> /dev/null; then
     echo "🚀 Initializing Mise Runtimes..."

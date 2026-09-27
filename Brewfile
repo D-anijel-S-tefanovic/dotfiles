@@ -23,6 +23,7 @@ cask "jetbrains-toolbox"
 cask "intellij-idea"
 cask "pycharm"
 cask "webstorm"
+cask "wireshark"
 
 # Native Apple Developer Typography Core
 cask "font-symbols-only-nerd-font" # Injects the raw icon glyph matrix for eza/ls
