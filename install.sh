@@ -26,7 +26,9 @@ mkdir -p "$HOME/.zsh/completions"
 echo "🔗 Symlinking dotfiles..."
 ln -sfn "$DOTFILES/.zshrc" "$HOME/.zshrc"
 ln -sfn "$DOTFILES/.zsh" "$HOME/.zsh"
-ln -sfn "$DOTFILES/mise.toml" "$HOME/.config/mise/config.toml" 2>/dev/null || mkdir -p "$HOME/.config/mise" && ln -sfn "$DOTFILES/mise.toml" "$HOME/.config/mise/config.toml"
+# Create mise directory first, then symlink cleanly
+mkdir -p "$HOME/.config/mise"
+ln -sfn "$DOTFILES/.mise.toml" "$HOME/.config/mise/config.toml"
 
 # 5. SYNC BREW PACKAGES
 echo "📦 Installing tools from Brewfile..."
@@ -42,8 +44,8 @@ fi
 # 6. INITIALIZE MISE & RUNTIMES
 if command -v mise &> /dev/null; then
     echo "🚀 Initializing Mise Runtimes..."
-    # Trust the global config file explicitly
-    mise trust ~/.config/mise/config.toml
+    # Trust using full path expansion
+    mise trust "$HOME/.config/mise/config.toml"
     # Install all versions defined in mise.toml
     mise install
 fi
