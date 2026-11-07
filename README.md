@@ -23,9 +23,12 @@ xcode-select --install
 
 ### 2. Clone the Repository
 ```bash
-mkdir -p ~/GitHub && cd ~/GitHub
-git clone https://github.com/D-anijel-S-tefanovic/dotfiles.git
-cd dotfiles
+mkdir -p ~/GitHub && cd ~/GitHub && \
+if ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
+  git clone git@github.com:Danijel-Stefanovic/dotfiles.git && cd dotfiles
+else
+  git clone https://github.com/Danijel-Stefanovic/dotfiles.git && cd dotfiles
+fi
 ```
 
 ### 3. Run the Bootstrap
